@@ -1,0 +1,58 @@
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+class Produto {
+    private String nome;
+    private double preco;
+
+    public Produto(String nome, double preco) {
+        this.nome = nome;
+        this.preco = preco;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    @Override
+    public String toString() {
+        return "Nome: " + nome + ", Preço: " + preco;
+    }
+}
+
+class Carrinho {
+    private List<Produto> produtos = new ArrayList<>();
+
+    public void adicionarProduto(Produto produto) {
+        produtos.add(produto);
+    }
+
+    public void atualizarProduto(int indice, Produto produto) {
+        produtos.set(indice, produto);
+    }
+
+    public void removerProduto(int indice) {
+        produtos.remove(indice);
+    }
+
+    public List<Produto> getProdutos() {
+        return produtos;
+    }
+
+    public int getQuantidadeItens() {
+        return produtos.size();
+    }
+
+    public double getPrecoTotal() {
+        double precoTotal = 0;
+        for (Produto produto : produtos) {
+            precoTotal += produto.getPreco();
+        }
+        return precoTotal;
+    }
+}
